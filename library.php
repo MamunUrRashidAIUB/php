@@ -8,16 +8,16 @@
 <style>
 .flex-container {
   display: flex;
-  gap: 50px;
- 
+gap:50px; 
 }
 .flex-container2 {
   display: flex;
  gap: 50px;
+ 
 }
 .text{
   display:flex;
-  gap:100px;
+  gap:210px;
 }
 .error{color:#FF0000;}
 </style>
@@ -60,17 +60,17 @@ function test_input($data) {
 <img src="images/R2.jpg" alt="Italian Trulli"height="200" width="200">
 <img src="images/r.jpg" alt="Italian Trulli"height="200" width="200">
 </div>
-<div class="text"><p>tisha and  moshtak love story</p>
-<p>me and my sad story</p>
-<p>others happy story</p></div>
+<div class="text"><p>book1</p>
+<p>book2</p>
+<p>book3</p></div>
 <div class="flex-container2">
 <img src="images/R.jpg" alt="Italian Trulli"height="200" width="200">
 <img src="images/R2.jpg" alt="Italian Trulli"height="200" width="200">
 <img src="images/r.jpg" alt="Italian Trulli"height="200" width="200">
 </div>
-<div class="text"><p>tisha and  moshtak love story</p>
-<p>me and my sad story</p>
-<p>others happy story</p></div>
+<div class="text"><p>book1</p>
+<p>book2</p>
+<p>book3</p></div>
 <div>
 <h1>search a book</h1>
 <p><span class="error">* required field</span></p>
@@ -92,9 +92,9 @@ function test_input($data) {
   <br>
   <label for="cars">choose your book:</label>
   <select name="books">
-    <option >tisha and moshtak</option>
-    <option >me and sad</option>
-    <option >others and happy</option>
+    <option >book1</option>
+    <option >book2</option>
+    <option >book3</option>
     
   </select>
   <br>
