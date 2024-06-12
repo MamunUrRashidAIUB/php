@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +19,41 @@
   display:flex;
   gap:100px;
 }
-
+.error{color:#FF0000;}
 </style>
 <body >
+
+<?php
+$name=$bname=$id="";
+$nameErr=$bnameErr=$idErr="";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["bname"])) {
+      $bnameErr = "Book name is required";
+  } else {
+      $bname = test_input($_POST["bname"]);
+  }
+
+  if (empty($_POST["name"])) {
+      $nameErr = "User name is required";
+  } else {
+      $name = test_input($_POST["name"]);
+  }
+
+  if (empty($_POST["id"])) {
+      $idErr = "Student ID is required";
+  } else {
+      $id = test_input($_POST["id"]);
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;}
+
+
+?>
 <h1>Need any book??</h1>
 <div class="flex-container">
 <img src="images/R.jpg" alt="Italian Trulli"height="200" width="200">
@@ -40,24 +73,28 @@
 <p>others happy story</p></div>
 <div>
 <h1>search a book</h1>
+<p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
   <label>Enter Book name:</label><br>
-  Name:<input type="text" name="bname" value="<?php echo $bname;?>">
+  <input type="text" name="bname" >
+  <span class="error">* <?php echo $bnameErr;?></span>
   <br>
-  <label for="">Enter your name</label>
+  <label>Enter your name</label>
   <br>
-  <input type="text" id="fname" name="fname">
+  <input type="text"  name="name">
+  <span class="error">* <?php echo $nameErr;?></span>
   <br>
-  <label for="fname">Enter Your Student Id:</label>
+  <label >Enter Your Student Id:</label>
   <br>
-  <input type="text" id="fname" name="fname" >
+  <input type="text" name="id">
+  <span class="error">* <?php echo $idErr;?></span>
   <br>
   <label for="cars">choose your book:</label>
-  <select name="cars" id="cars">
-    <option value="volvo">tisha and moshtak</option>
-    <option value="saab">me and sad</option>
-    <option value="opel">others and happy</option>
+  <select name="books">
+    <option >tisha and moshtak</option>
+    <option >me and sad</option>
+    <option >others and happy</option>
     
   </select>
   <br>
@@ -66,9 +103,13 @@
 
 </div>
 <?php
-$bname="";
- echo "<h2>Your Input:</h2>";
+ echo "<h2>My  Input:</h2>";
  echo $bname;
+ echo "<br>";
+ echo $name;
+ echo "<br>";
+ echo $id;
+ echo "<br>";
  ?>
 </body>
 </html>
