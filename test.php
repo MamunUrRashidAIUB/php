@@ -51,7 +51,7 @@
 <body>
 
 <?php
-session_start();
+session_start(); // Start or resume session
 
 $name = $bname = $id = "";
 $nameErr = $bnameErr = $idErr = "";
@@ -75,21 +75,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = test_input($_POST["id"]);
     }
 
-    
+    // Check if the student has already borrowed a book
     if (isset($_SESSION['borrowed']) && $_SESSION['borrowed'] == true) {
         $bnameErr = "You have already borrowed a book";
     } else {
-        
+        // Set session variable to indicate book has been borrowed
         $_SESSION['borrowed'] = true;
 
-      
+        // Set cookie with borrowed book data (example)
         $cookie_name = "library_data";
         $cookie_value = json_encode([
             'bname' => $bname,
             'name' => $name,
             'id' => $id
         ]);
-        setcookie($cookie_name, $cookie_value, time() + 3600);
+        setcookie($cookie_name, $cookie_value, time() + 3600); // Adjust expiration time as needed
     }
 }
 

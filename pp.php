@@ -3,6 +3,7 @@
 <head>
   <title>library</title>
   <style>
+   
     .container {
       display: flex;
       justify-content: center;
@@ -50,58 +51,46 @@
 </head>
 <body>
 
-<?php
-session_start();
+<div class="container">
 
-$name = $bname = $id = "";
-$nameErr = $bnameErr = $idErr = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  <?php
+  $name=$bname=$id="";
+  $nameErr=$bnameErr=$idErr="";
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["bname"])) {
         $bnameErr = "Book name is required";
     } else {
         $bname = test_input($_POST["bname"]);
     }
-
+  
     if (empty($_POST["name"])) {
         $nameErr = "User name is required";
     } else {
         $name = test_input($_POST["name"]);
     }
-
+  
     if (empty($_POST["id"])) {
         $idErr = "Student ID is required";
     } else {
         $id = test_input($_POST["id"]);
     }
-
-    
-    if (isset($_SESSION['borrowed']) && $_SESSION['borrowed'] == true) {
-        $bnameErr = "You have already borrowed a book";
-    } else {
-        
-        $_SESSION['borrowed'] = true;
-
-      
-        $cookie_name = "library_data";
-        $cookie_value = json_encode([
-            'bname' => $bname,
-            'name' => $name,
-            'id' => $id
-        ]);
-        setcookie($cookie_name, $cookie_value, time() + 3600);
-    }
-}
-
-function test_input($data) {
+    $cookie_name = "library_data";
+    $cookie_value = json_encode([
+        'bname' => $bname,
+        'name' => $name,
+        'id' => $id
+    ]);
+    setcookie($cookie_name, $cookie_value, time() + 3600);
+  }
+  
+  
+  function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
-}
-?>
-
-<div class="container">
+  }
+  ?>
 
   <ul>
     <li><a href="#">Login</a></li>
@@ -136,7 +125,7 @@ function test_input($data) {
     <p>book5</p>
     <p>book6</p>
   </div>
-  
+
   <div>
     <h1 class="text-4xl">Search a book</h1>
     <p class="text place-content-center"><span class="error">* required field</span></p>
