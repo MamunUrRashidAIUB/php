@@ -114,27 +114,27 @@ function test_input($data) {
   <h1 class="text-5xl">Need any book??</h1>
 
   <div class="flex-container place-content-center">
-    <img src="images/R.jpg" alt="Book 1" height="200" width="200">
-    <img src="images/R2.jpg" alt="Book 2" height="200" width="200">
-    <img src="images/r.jpg" alt="Book 3" height="200" width="200">
+    <img src="images/1.jpg" alt="Book 1" height="200" width="200">
+    <img src="images/2.jpg" alt="Book 2" height="200" width="200">
+    <img src="images/3.jpg" alt="Book 3" height="200" width="200">
   </div>
 
   <div class="text place-content-center">
-    <p>book1</p>
-    <p>book2</p>
-    <p>book3</p>
+    <p>Design</p>
+    <p>Annual Report</p>
+    <p>Amphibious Soul</p>
   </div>
 
   <div class="flex-container2 place-content-center">
-    <img src="images/R.jpg" alt="Book 4" height="200" width="200">
-    <img src="images/R2.jpg" alt="Book 5" height="200" width="200">
-    <img src="images/r.jpg" alt="Book 6" height="200" width="200">
+    <img src="images/4.jpg" alt="Book 4" height="200" width="200">
+    <img src="images/5.jpg" alt="Book 5" height="200" width="200">
+    <img src="images/6.jpg" alt="Book 6" height="200" width="200">
   </div>
 
   <div class="text place-content-center">
-    <p>book4</p>
-    <p>book5</p>
-    <p>book6</p>
+    <p>I hope this finds you well</p>
+    <p>Happy</p>
+    <p>Soul River</p>
   </div>
   
   <div>
