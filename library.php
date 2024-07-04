@@ -7,9 +7,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      background-color:#E1DCC5;
     }
 
-    .flex-container, .flex-container2 {
+    .flex-container {
       display: flex;
       gap: 50px;
     }
@@ -18,6 +19,7 @@
       display: flex;
       gap: 210px;
       justify-content: center;
+      text-align: center;
     }
 
     .error {
@@ -28,17 +30,44 @@
       list-style-type: none;
       padding: 0;
       text-align: center;
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px; 
     }
 
     ul li {
       display: inline;
-      padding: 10px;
+      text-decoration: none;
+      
     }
 
     h1 {
       text-align: center;
     }
+
+    .book-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .book-title {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+    ul li img {
+      height: 100px; 
+      width: 100px;
+  
+ 
+    }
   </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -87,43 +116,52 @@ function test_input($data) {
 }
 ?>
 
-<div class="container">
+<div class="container ">
   <ul>
-    <li><a href="#">Login</a></li>
+   <li> <img src="images/logo.svg" alt=""></li>
+    
     <li><a href="#">Token validation</a></li>
     <li><a href="#">Book search</a></li>
     <li><a href="#">Book loan</a></li>
     <li><a href="#">Send reminder</a></li>
+    <li><button type="button" class="btn btn-light">login</button></li>
+    <li><button type="button" class="btn btn-primary">Signup</button></li>
   </ul>
 
   <h1>Need any book?</h1>
 
   <div class="flex-container">
-    <img src="images/1.jpg" alt="Book 1" height="200" width="200">
-    <img src="images/2.jpg" alt="Book 2" height="200" width="200">
-    <img src="images/3.jpg" alt="Book 3" height="200" width="200">
+    <div class="book-item">
+      <img src="images/1.jpg" alt="Book 1" height="200" width="200">
+      <div class="book-title">Design</div>
+    </div>
+    <div class="book-item">
+      <img src="images/2.jpg" alt="Book 2" height="200" width="200">
+      <div class="book-title">Annual Report</div>
+    </div>
+    <div class="book-item">
+      <img src="images/3.jpg" alt="Book 3" height="200" width="200">
+      <div class="book-title">Amphibious Soul</div>
+    </div>
   </div>
 
-  <div class="text">
-    <p>Design</p>
-    <p>Annual Report</p>
-    <p>Amphibious Soul</p>
-  </div>
-
-  <div class="flex-container2">
-    <img src="images/4.jpg" alt="Book 4" height="200" width="200">
-    <img src="images/5.jpg" alt="Book 5" height="200" width="200">
-    <img src="images/6.jpg" alt="Book 6" height="200" width="200">
-  </div>
-
-  <div class="text">
-    <p>I Hope This Finds You Well</p>
-    <p>Happy</p>
-    <p>Soul River</p>
+  <div class="flex-container">
+    <div class="book-item">
+      <img src="images/4.jpg" alt="Book 4" height="200" width="200">
+      <div class="book-title">I Hope This Finds You Well</div>
+    </div>
+    <div class="book-item">
+      <img src="images/5.jpg" alt="Book 5" height="200" width="200">
+      <div class="book-title">Happy</div>
+    </div>
+    <div class="book-item">
+      <img src="images/6.jpg" alt="Book 6" height="200" width="200">
+      <div class="book-title">Soul River</div>
+    </div>
   </div>
 
   <div>
-    <h1>Search a book</h1>
+    <h1> Search a book</h1>
     <p><span class="error">* required field</span></p>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <label>Enter Book Name:</label><br>
@@ -147,7 +185,7 @@ function test_input($data) {
   echo $bname . "<br>";
   echo $name . "<br>";
   echo $id . "<br>";
-
+  $cookie_name = "library_data";
   if (isset($_COOKIE[$cookie_name])) {
     $stored_data = json_decode($_COOKIE[$cookie_name], true);
     echo "<h2>Stored Data:</h2>";
