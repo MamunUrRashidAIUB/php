@@ -40,7 +40,7 @@
 
     ul li {
       display: inline;
-      text-decoration: none;
+      text-decoration: no;
       
     }
 
