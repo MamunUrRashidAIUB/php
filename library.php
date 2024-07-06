@@ -1,3 +1,4 @@
+<?php include 'navbar.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,11 +37,12 @@
       align-items: center;
       justify-content: center;
       gap: 20px; 
+      text-decoration: none;
     }
 
     ul li {
       display: inline;
-      text-decoration: no;
+      text-decoration: none;
       
     }
 
@@ -65,11 +67,21 @@
   
  
     }
+    .fullbody{
+      background-color:#E1DCC5;
+    }
+    .bg{
+      background-color: #f0f0f0;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-bottom: 50px;
+      padding-top: 50px;
+    }
   </style>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="fullbody">
 
 <?php
 session_start();
@@ -116,49 +128,41 @@ function test_input($data) {
 }
 ?>
 
-<div class="container ">
-  <ul>
-   <li> <img src="images/logo.svg" alt=""></li>
-    
-    <li><a href="#">Token validation</a></li>
-    <li><a href="#">Book search</a></li>
-    <li><a href="#">Book loan</a></li>
-    <li><a href="#">Send reminder</a></li>
-    <li><button type="button" class="btn btn-light">login</button></li>
-    <li><button type="button" class="btn btn-primary" onclick="window.location.href='signup.php';">Signup</button></li>
-  </ul>
-
+<div class="container">
+  <div class="bg">
   <h1>Need any book?</h1>
 
-  <div class="flex-container">
-    <div class="book-item">
-      <img src="images/1.jpg" alt="Book 1" height="200" width="200">
-      <div class="book-title">Design</div>
-    </div>
-    <div class="book-item">
-      <img src="images/2.jpg" alt="Book 2" height="200" width="200">
-      <div class="book-title">Annual Report</div>
-    </div>
-    <div class="book-item">
-      <img src="images/3.jpg" alt="Book 3" height="200" width="200">
-      <div class="book-title">Amphibious Soul</div>
-    </div>
+<div class="flex-container">
+  <div class="book-item">
+    <img src="images/1.jpg" alt="Book 1" height="200" width="200">
+    <div class="book-title">Design</div>
   </div>
+  <div class="book-item">
+    <img src="images/2.jpg" alt="Book 2" height="200" width="200">
+    <div class="book-title">Annual Report</div>
+  </div>
+  <div class="book-item">
+    <img src="images/3.jpg" alt="Book 3" height="200" width="200">
+    <div class="book-title">Amphibious Soul</div>
+  </div>
+</div>
 
-  <div class="flex-container">
-    <div class="book-item">
-      <img src="images/4.jpg" alt="Book 4" height="200" width="200">
-      <div class="book-title">I Hope This Finds You Well</div>
-    </div>
-    <div class="book-item">
-      <img src="images/5.jpg" alt="Book 5" height="200" width="200">
-      <div class="book-title">Happy</div>
-    </div>
-    <div class="book-item">
-      <img src="images/6.jpg" alt="Book 6" height="200" width="200">
-      <div class="book-title">Soul River</div>
-    </div>
+<div class="flex-container">
+  <div class="book-item">
+    <img src="images/4.jpg" alt="Book 4" height="200" width="200">
+    <div class="book-title">I Hope This Finds You Well</div>
   </div>
+  <div class="book-item">
+    <img src="images/5.jpg" alt="Book 5" height="200" width="200">
+    <div class="book-title">Happy</div>
+  </div>
+  <div class="book-item">
+    <img src="images/6.jpg" alt="Book 6" height="200" width="200">
+    <div class="book-title">Soul River</div>
+  </div>
+</div>
+  </div>
+ 
 
   <div>
     <h1> Search a book</h1>
