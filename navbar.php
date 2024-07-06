@@ -45,7 +45,7 @@
     <li><a href="#">Book search</a></li>
     <li><a href="#">Book loan</a></li>
     <li><a href="#">Send reminder</a></li>
-    <li><button type="button" class="btn btn-light">login</button></li>
+    <li><button type="button" class="btn btn-light" onclick="window.location.href='signin.php';">login</button></li>
     <li><button type="button" class="btn btn-primary" onclick="window.location.href='signup.php';">Signup</button></li>
   </ul>
     </div>

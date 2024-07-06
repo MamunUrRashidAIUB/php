@@ -3,87 +3,16 @@
 <html>
 <head>
   <title>Library</title>
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color:#E1DCC5;
-    }
 
-    .flex-container {
-      display: flex;
-      gap: 50px;
-    }
+  <link rel="stylesheet" href="styles.css">
 
-    .text {
-      display: flex;
-      gap: 210px;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .error {
-      color: #FF0000;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      text-align: center;
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px; 
-      text-decoration: none;
-    }
-
-    ul li {
-      display: inline;
-      text-decoration: none;
-      
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .book-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .book-title {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #333;
-    }
-    ul li img {
-      height: 100px; 
-      width: 100px;
-  
- 
-    }
-    .fullbody{
-      background-color:#E1DCC5;
-    }
-    .bg{
-      background-color: #f0f0f0;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-bottom: 50px;
-      padding-top: 50px;
-    }
-  </style>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body class="fullbody">
 
 <?php
+include 'books.php'; // Include the book data
 session_start();
 
 $name = $bname = $id = "";
@@ -126,6 +55,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function test_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
+
+// Book data
+$books = [
+    ["title" => "Design", "image" => "images/1.jpg"],
+    ["title" => "Annual Report", "image" => "images/2.jpg"],
+    ["title" => "Amphibious Soul", "image" => "images/3.jpg"],
+    ["title" => "I Hope This Finds You Well", "image" => "images/4.jpg"],
+    ["title" => "Happy", "image" => "images/5.jpg"],
+    ["title" => "Soul River", "image" => "images/6.jpg"],
+    // Add more books here
+];
+
+$booksPerPage = 3; // Number of books to show per page
+$totalBooks = count($books);
+$totalPages = ceil($totalBooks / $booksPerPage);
+
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $currentPage = (int)$_GET['page'];
+} else {
+    $currentPage = 1;
+}
+
+$startIndex = ($currentPage - 1) * $booksPerPage;
+$endIndex = min($startIndex + $booksPerPage, $totalBooks);
+$currentBooks = array_slice($books, $startIndex, $booksPerPage);
 ?>
 
 <div class="container">
@@ -133,36 +87,34 @@ function test_input($data) {
   <h1>Need any book?</h1>
 
 <div class="flex-container">
+  <?php foreach ($currentBooks as $book): ?>
   <div class="book-item">
-    <img src="images/1.jpg" alt="Book 1" height="200" width="200">
-    <div class="book-title">Design</div>
+    <img src="<?php echo $book['image']; ?>" alt="<?php echo $book['title']; ?>" height="200" width="200">
+    <div class="book-title"><?php echo $book['title']; ?></div>
   </div>
-  <div class="book-item">
-    <img src="images/2.jpg" alt="Book 2" height="200" width="200">
-    <div class="book-title">Annual Report</div>
-  </div>
-  <div class="book-item">
-    <img src="images/3.jpg" alt="Book 3" height="200" width="200">
-    <div class="book-title">Amphibious Soul</div>
+  <?php endforeach; ?>
+  
+<div class="pagination">
+    <?php if ($currentPage > 1): ?>
+      <a href="?page=<?php echo $currentPage - 1; ?>">&laquo;</a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+      <?php if ($i == $currentPage): ?>
+        <strong><?php echo $i; ?></strong>
+      <?php else: ?>
+        <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+      <?php endif; ?>
+    <?php endfor; ?>
+
+    <?php if ($currentPage < $totalPages): ?>
+      <a href="?page=<?php echo $currentPage + 1; ?>"> &raquo;</a>
+    <?php endif; ?>
   </div>
 </div>
 
-<div class="flex-container">
-  <div class="book-item">
-    <img src="images/4.jpg" alt="Book 4" height="200" width="200">
-    <div class="book-title">I Hope This Finds You Well</div>
+
   </div>
-  <div class="book-item">
-    <img src="images/5.jpg" alt="Book 5" height="200" width="200">
-    <div class="book-title">Happy</div>
-  </div>
-  <div class="book-item">
-    <img src="images/6.jpg" alt="Book 6" height="200" width="200">
-    <div class="book-title">Soul River</div>
-  </div>
-</div>
-  </div>
- 
 
   <div>
     <h1> Search a book</h1>
@@ -198,6 +150,7 @@ function test_input($data) {
     echo "Student ID: " . $stored_data['id'] . "<br>";
   }
   ?>
+
 </div>
 
 </body>
