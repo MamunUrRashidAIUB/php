@@ -40,7 +40,7 @@
 <body>
     <div class="fornavbar">
     <ul>
-   <li> <img src="images/logo.svg" alt=""></li>
+   <li> <a href="library.php" ><img src="images/logo.svg" alt=""></a> </li>
     <li><a href="#">Token validation</a></li>
     <li><a href="#">Book search</a></li>
     <li><a href="#">Book loan</a></li>

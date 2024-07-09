@@ -1,4 +1,5 @@
 <?php include 'navbar.php'; ?>
+<?php include("connection.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,7 @@ background-color:#E1DCC5;
 <div class="container form-container">
     <div class="form-card">
         <h1>Login</h1>
-        <form method="post" action="login_process.php">
+        <form method="post" action="signinprocess.php">
             <div class="mb-3">
                 <label for="studentId" class="form-label">Student ID:</label>
                 <input type="text" class="form-control" id="studentId" name="studentId" required>
@@ -43,7 +44,7 @@ background-color:#E1DCC5;
                 <label for="password" class="form-label">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" name="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
 </div>
