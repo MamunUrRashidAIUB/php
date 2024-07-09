@@ -1,4 +1,5 @@
 <?php include 'navbar.php'; ?>
+<?php include 'connection.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,20 +37,20 @@
     <div class="form-card">
         <h1>Sign Up</h1>
         <p>Get your free Open Library card and borrow digital books from the nonprofit Internet Archive</p>
-        <form method="post" action="">
+        <form method="post" action="signupprocess.php">
             <div class="mb-3">
                 <label for="fullName" class="form-label">Full Name:</label>
-                <input type="text" class="form-control" id="fullName" name="fullName" required>
+                <input type="text" class="form-control" id="fullName" name="name" required>
             </div>
             <div class="mb-3">
                 <label for="studentId" class="form-label">Student ID:</label>
-                <input type="text" class="form-control" id="studentId" name="studentId" required>
+                <input type="text" class="form-control" id="studentId" name="studentid" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Create Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
         </form>
     </div>
 </div>
