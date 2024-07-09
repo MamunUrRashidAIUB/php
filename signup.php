@@ -28,18 +28,7 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-        function validateForm() {
-            var studentId = document.getElementById("studentId").value;
-            var regex = /^[0-9]{2}-[0-9]{5}-[0-9]{1}$/;
-
-            if (!regex.test(studentId)) {
-                alert("Invalid Student ID format. It should be in the format XX-XXXXX-X");
-                return false;
-            }
-            return true;
-        }
-    </script>
+ 
 </head>
 <body class="fullbody">
 
@@ -47,7 +36,7 @@
     <div class="form-card">
         <h1>Sign Up</h1>
         <p>Get your free Open Library card and borrow digital books from the nonprofit Internet Archive</p>
-        <form method="post" action="signup.php" onsubmit="return validateForm()">
+        <form method="post" action="">
             <div class="mb-3">
                 <label for="fullName" class="form-label">Full Name:</label>
                 <input type="text" class="form-control" id="fullName" name="fullName" required>

@@ -1,18 +1,17 @@
 <?php include 'navbar.php'; ?>
+<?php include 'books.php'?>
+<?php include 'connection.php'?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Library</title>
-
-  <link rel="stylesheet" href="styles.css">
-
+ <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body class="fullbody">
 
 <?php
-include 'books.php'; // Include the book data
 session_start();
 
 $name = $bname = $id = "";
@@ -56,18 +55,9 @@ function test_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
-// Book data
-$books = [
-    ["title" => "Design", "image" => "images/1.jpg"],
-    ["title" => "Annual Report", "image" => "images/2.jpg"],
-    ["title" => "Amphibious Soul", "image" => "images/3.jpg"],
-    ["title" => "I Hope This Finds You Well", "image" => "images/4.jpg"],
-    ["title" => "Happy", "image" => "images/5.jpg"],
-    ["title" => "Soul River", "image" => "images/6.jpg"],
-    // Add more books here
-];
 
-$booksPerPage = 3; // Number of books to show per page
+
+$booksPerPage = 6; // Number of books to show per page
 $totalBooks = count($books);
 $totalPages = ceil($totalBooks / $booksPerPage);
 
@@ -93,26 +83,7 @@ $currentBooks = array_slice($books, $startIndex, $booksPerPage);
     <div class="book-title"><?php echo $book['title']; ?></div>
   </div>
   <?php endforeach; ?>
-  
-<div class="pagination">
-    <?php if ($currentPage > 1): ?>
-      <a href="?page=<?php echo $currentPage - 1; ?>">&laquo;</a>
-    <?php endif; ?>
-
-    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-      <?php if ($i == $currentPage): ?>
-        <strong><?php echo $i; ?></strong>
-      <?php else: ?>
-        <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-      <?php endif; ?>
-    <?php endfor; ?>
-
-    <?php if ($currentPage < $totalPages): ?>
-      <a href="?page=<?php echo $currentPage + 1; ?>"> &raquo;</a>
-    <?php endif; ?>
-  </div>
 </div>
-
 
   </div>
 
@@ -151,6 +122,7 @@ $currentBooks = array_slice($books, $startIndex, $booksPerPage);
   }
   ?>
 
+  
 </div>
 
 </body>
