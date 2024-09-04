@@ -16,7 +16,7 @@ if(isset($_POST["submit"])) {
         if (password_verify($password, $hashed_password)) {
             $_SESSION["studentid"] = $row["studentid"];
             $_SESSION["name"] = $row["name"];
-            header("Location: welcome.php");
+            header("Location: library.php");
         } else {
             echo '<script>
                     window.location.href = "signin.php";

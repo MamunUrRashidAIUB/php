@@ -15,7 +15,7 @@ if(isset($_POST["submit"])) {
         $sql = "INSERT INTO signup(name, studentid, password) VALUES('$username', '$id', '$hash')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            header("Location: welcome.php");
+            header("Location: library.php");
         }
     } else {
         echo '<script>
