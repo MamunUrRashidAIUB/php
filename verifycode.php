@@ -9,12 +9,12 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $entered_code = $_POST["verification_code"];
     
-    // Check if the verification code matches the one in the database
+    
     $sql = "SELECT * FROM signup WHERE email='$email' AND verification_code='$entered_code'";
     $result = mysqli_query($conn, $sql);
     
     if ($result && mysqli_num_rows($result) > 0) {
-        // If the code is correct, allow the user to reset the password
+        
         echo '<script>
                 window.location.href = "resetpassword.php?email=' . $email . '";
               </script>';

@@ -4,12 +4,10 @@ include("connection.php");
 if (isset($_GET['email'])) {
     $email = $_GET['email'];
 }
-
 if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $new_password = $_POST["password"];
     
-    // Update the password in the database
     $sql = "UPDATE signup SET password='$new_password', verification_code=NULL WHERE email='$email'";
     $result = mysqli_query($conn, $sql);
     
@@ -25,7 +23,6 @@ if (isset($_POST["submit"])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
