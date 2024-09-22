@@ -11,9 +11,9 @@ if(isset($_POST["submit"])) {
 
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        $hashed_password = $row["password"];
+        $stored_password = $row["password"];
 
-        if (password_verify($password, $hashed_password)) {
+        if ($password === $stored_password) {
             $_SESSION["studentid"] = $row["studentid"];
             $_SESSION["name"] = $row["name"];
             header("Location: library.php");
