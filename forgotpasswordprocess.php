@@ -1,37 +1,30 @@
 <?php
 include("connection.php");
 
-if(isset($_POST["submit"])) { 
+if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     
     // Check if the email exists in the database
     $sql = "SELECT * FROM signup WHERE email='$email'";
     $result = mysqli_query($conn, $sql);
-
+    
     if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $token = bin2hex(random_bytes(50));
-        $expires_at = date("Y-m-d H:i:s", strtotime('+1 hour'));
-        $sql = "INSERT INTO password_resets (email, token, expires_at) VALUES ('$email', '$token', '$expires_at')";
-        mysqli_query($conn, $sql);
-        $reset_link = "http://yourwebsite.com/resetpassword.php?token=$token";
-        $subject = "Password Reset Request";
-        $message = "Click the following link to reset your password: $reset_link";
-        $headers = "From: no-reply@yourwebsite.com";
-        if (mail($email, $subject, $message, $headers)) {
-            echo '<script>
-                    alert("A password reset link has been sent to your email.");
-                    window.location.href = "signin.php";
-                  </script>';
-        } else {
-            echo '<script>
-                    alert("Failed to send the email. Please try again later.");
-                    window.location.href = "forgotpassword.php";
-                  </script>';
-        }
+        // Generate a random verification code
+        $verification_code = rand(100000, 999999);
+        
+        // Store the verification code in the database temporarily
+        $sql_update = "UPDATE signup SET verification_code='$verification_code' WHERE email='$email'";
+        mysqli_query($conn, $sql_update);
+        
+        // Send the verification code to the user's email
+        // In real scenario, you will send it via email using PHP mailer, but for simplicity, we'll use echo
+        echo '<script>
+                alert("A verification code has been sent to your email: ' . $email . '");
+                window.location.href = "verifycode.php?email=' . $email . '";
+              </script>';
     } else {
         echo '<script>
-                alert("No user found with this email.");
+                alert("Email not found!");
                 window.location.href = "forgotpassword.php";
               </script>';
     }
